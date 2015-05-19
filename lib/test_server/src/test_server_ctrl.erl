@@ -1809,7 +1809,7 @@ start_minor_log_file1(Mod, Func, LogDir, AbsName, MFA) ->
     io:put_chars(Fd, Header),
 
     io:put_chars(Fd, "<a name=\"top\"></a>"),
-    io:put_chars(Fd, "<pre>\n"),
+    io:put_chars(Fd, "<xmp>\n"),
 
     SrcListing = downcase(atom_to_list(Mod)) ++ ?src_listing_ext,
     
@@ -1840,7 +1840,7 @@ stop_minor_log_file() ->
     test_server_gl:unset_minor_fd(group_leader()),
     Fd = get(test_server_minor_fd),
     Footer = get(test_server_minor_footer),
-    io:put_chars(Fd, "</pre>\n" ++ Footer),
+    io:put_chars(Fd, "</xmp>\n" ++ Footer),
     ok = file:close(Fd),
     put(test_server_minor_fd, undefined).
 
